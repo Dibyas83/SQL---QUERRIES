@@ -1,0 +1,2241 @@
+
+
+
+
+
+IBM
+inner join and join are same
+
+select distinct c.customer_id,c.first_name,c.last_name,count(*) as "count of rentals" from film as f
+ inner join inventory as i on i.film_id = f.film_id
+ inner join rental as r on r.inventory_id = i.inventory_id
+ inner join customer as c on c.customer_id = r.customer_id
+ left join payment as p on p.rental_id = r.rental_id and p.customer_id = c.customer_id
+ group by c.customer_id,c,first_name,c.last_name
+ order by 4 desc;
+
+-----
+dvdrental=# SELECT first_name
+dvdrental-#     , last_name
+dvdrental-#     , film.title
+dvdrental-# FROM actor
+dvdrental-#     LEFT JOIN film_actor
+dvdrental-#         ON film_actor.actor_id = actor.actor_id
+dvdrental-#     LEFT JOIN film
+dvdrental-#         ON film.film_id = film_actor.film_id
+dvdrental-#         AND film.title = 'Snowman Rollercoaster'
+dvdrental-# WHERE actor.last_name = 'Hoffman'
+dvdrental-#     AND actor.first_name = 'Woody'
+dvdrental-# ORDER BY 3;
+ first_name | last_name |         title
+------------+-----------+-----------------------
+ Woody      | Hoffman   | Snowman Rollercoaster
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+ Woody      | Hoffman   |
+(31 rows)
+
+
+dvdrental=#   SELECT first_name
+dvdrental-#     , last_name
+dvdrental-#     , film.title
+dvdrental-# FROM actor
+dvdrental-#     LEFT JOIN film_actor
+dvdrental-#         ON film_actor.actor_id = actor.actor_id
+dvdrental-#     LEFT JOIN film
+dvdrental-#         ON film.film_id = film_actor.film_id
+dvdrental-#
+dvdrental-# WHERE actor.last_name = 'Hoffman'
+dvdrental-#     AND actor.first_name = 'Woody'
+dvdrental-#     AND film.title = 'Snowman Rollercoaster'
+dvdrental-# ORDER BY 3;
+ first_name | last_name |         title
+------------+-----------+-----------------------
+ Woody      | Hoffman   | Snowman Rollercoaster
+(1 row)
+
+
+
+
+
+
+SELECT first_name
+    , last_name
+    , film.title
+FROM actor
+    LEFT JOIN film_actor
+        ON film_actor.actor_id = actor.actor_id
+    LEFT JOIN film
+        ON film.film_id = film_actor.film_id
+       
+WHERE actor.last_name = 'Hoffman'
+    AND actor.first_name = 'Woody'
+    AND film.title = 'Snowman Rollercoaster'
+ORDER BY 3;
+  
+ AND film.title = 'Snowman Rollercoaster'
+SELECT first_name
+    , last_name
+    , film.title
+FROM actor
+    LEFT JOIN film_actor
+        ON film_actor.actor_id = actor.actor_id
+    INNER JOIN film
+        ON film.film_id = film_actor.film_id
+        AND film.title = 'Snowman Rollercoaster'
+WHERE actor.last_name = 'Hoffman'
+    AND actor.first_name = 'Woody'
+ORDER BY 3
+
+select  first_name,last_name,film.title
+FROM  actor
+left join film_actor  on film_actor.actor_id = actor.actor_id,
+left join film  on film.film_id = film_actor.film_id
+where actor.first_name = 'Woody' and actor.last_name = 'Hoffman'
+order_by 3;
+
+dvdrental=# SELECT first_name
+dvdrental-#     , last_name
+dvdrental-#     , film.title
+dvdrental-# FROM actor
+dvdrental-#     INNER JOIN film_actor
+dvdrental-#         ON film_actor.actor_id = actor.actor_id
+dvdrental-#     INNER JOIN film
+dvdrental-#         ON film.film_id = film_actor.film_id
+dvdrental-# WHERE actor.last_name = 'Hoffman'
+dvdrental-#     AND actor.first_name = 'Woody'
+dvdrental-# ORDER BY 3;
+ first_name | last_name |          title
+------------+-----------+-------------------------
+ Woody      | Hoffman   | Alice Fantasia
+ Woody      | Hoffman   | Atlantis Cause
+ Woody      | Hoffman   | Beach Heartbreakers
+ Woody      | Hoffman   | Birch Antitrust
+ Woody      | Hoffman   | Breaking Home
+ Woody      | Hoffman   | Bunch Minds
+ Woody      | Hoffman   | Duck Racer
+ Woody      | Hoffman   | Durham Panky
+ Woody      | Hoffman   | Entrapment Satisfaction
+ Woody      | Hoffman   | Gilmore Boiled
+ Woody      | Hoffman   | Knock Warlock
+ Woody      | Hoffman   | Lambs Cincinatti
+ Woody      | Hoffman   | Loser Hustler
+ Woody      | Hoffman   | Maiden Home
+ Woody      | Hoffman   | Midnight Westward
+ Woody      | Hoffman   | Moonwalker Fool
+ Woody      | Hoffman   | Neighbors Charade
+ Woody      | Hoffman   | None Spiking
+ Woody      | Hoffman   | Pajama Jawbreaker
+ Woody      | Hoffman   | Pilot Hoosiers
+ Woody      | Hoffman   | Room Roman
+ Woody      | Hoffman   | Shootist Superfly
+ Woody      | Hoffman   | Shrunk Divine
+ Woody      | Hoffman   | Snowman Rollercoaster
+ Woody      | Hoffman   | Spice Sorority
+ Woody      | Hoffman   | Spy Mile
+ Woody      | Hoffman   | Telegraph Voyage
+ Woody      | Hoffman   | Trap Guys
+ Woody      | Hoffman   | Wait Cider
+ Woody      | Hoffman   | Wife Turn
+ Woody      | Hoffman   | Wyoming Storm
+(31 rows)
+
+
+dvdrental=# SELECT first_name
+dvdrental-#     , last_name
+dvdrental-#     , film.title
+dvdrental-# FROM actor
+dvdrental-#     INNER JOIN film_actor
+dvdrental-#         ON film_actor.actor_id = actor.actor_id
+dvdrental-#     INNER JOIN film
+dvdrental-#         ON film.film_id = film_actor.film_id
+dvdrental-# WHERE film.title = 'Snowman Rollercoaster'
+dvdrental-# ORDER BY 3;
+ first_name | last_name |         title
+------------+-----------+-----------------------
+ Uma        | Wood      | Snowman Rollercoaster
+ Woody      | Hoffman   | Snowman Rollercoaster
+ Matthew    | Carrey    | Snowman Rollercoaster
+(3 rows)
+;
+1- how many films has each customer rnted
+2-how much money has each person spent
+3-what is the average length of films each customer rented
+4-when was each customers eaarliesst rental date
+5-when was each customers most recent rental date 
+
+1
+
+
+on payment table  we find payments of rent ,and does left join to rental to know haw many movies each customer has rented and  if inner join join it would have shown all customer those  paid
+
+dvdrental=#  select distinct c.customer_id,c.first_name,c.last_name,count(*) as "count of rentals" from film as f
+dvdrental-#  inner join inventory as i on i.film_id = f.film_id
+dvdrental-#  inner join rental as r on r.inventory_id = i.inventory_id
+dvdrental-#  inner join customer as c on c.customer_id = r.customer_id
+dvdrental-#  left join payment as p on p.rental_id = r.rental_id and p.customer_id = c.customer_id
+dvdrental-#  group by c.customer_id,c,first_name,c.last_name
+dvdrental-#  order by 4 desc;
+ customer_id | first_name  |  last_name   | count of rentals
+-------------+-------------+--------------+------------------
+         148 | Eleanor     | Hunt         |               46
+         526 | Karl        | Seal         |               45
+         144 | Clara       | Shaw         |               42
+         236 | Marcia      | Dean         |               42
+          75 | Tammy       | Sanders      |               41
+         197 | Sue         | Peters       |               40
+         469 | Wesley      | Bull         |               40
+         137 | Rhonda      | Kennedy      |               39
+         178 | Marion      | Snyder       |               39
+         468 | Tim         | Cary         |               39
+           5 | Elizabeth   | Brown        |               38
+         295 | Daisy       | Bates        |               38
+         410 | Curtis      | Irby         |               38
+         459 | Tommy       | Collazo      |               38
+         176 | June        | Carroll      |               37
+         198 | Elsie       | Kelley       |               37
+         257 | Marsha      | Douglas      |               37
+         366 | Brandon     | Huey         |               37
+          29 | Angela      | Hernandez    |               36
+         267 | Margie      | Wade         |               36
+ 
+
+select  c.customer_id,c.first_name,c.last_name,count(*) as "count of rentals" ,
+sum(p.amount) as "total money spent",
+avg(f.length) as "leng",
+trunc(avg(f.length),2) as "leng truncated",
+round(avg(f.length),2) as "leng rounded",
+trunc(avg(f.length)) as "leng truncated whole",
+round(avg(f.length)) as "leng rounded whole",
+min(r.rental_date) as "earlist rent date",
+max(r.rental_date) as "latest rent date"
+ from film as f
+ inner join inventory as i on i.film_id = f.film_id
+ inner join rental as r on r.inventory_id = i.inventory_id
+ inner join customer as c on c.customer_id = r.customer_id
+ left join payment as p on p.rental_id = r.rental_id and p.customer_id = c.customer_id
+ group by c.customer_id,c,first_name,c.last_name
+ order by 4 desc;
+
+56.3456
+precison = no of digits ina no with decimal = 6
+scale = after decimal = 4
+
+--------------------
+cross join
+with setA as(
+select 'x' as A
+union all
+select  'y'
+union all
+select 'z'),
+
+setB as(                  
+select '1' as B
+union all
+select  '2'
+union all
+select '3')
+ 
+1-select A from setA;
+
+or
+2-- select A, B
+from setA 
+ full outer join setB
+  on  setA.A = setB.B;
+or
+dvdrental=# with setA as(
+dvdrental(# select 'x' as A
+dvdrental(# union all
+dvdrental(# select  'y'
+dvdrental(# union all
+dvdrental(# select 'z'),
+dvdrental-#
+dvdrental-# setB as(
+dvdrental(# select '1' as B
+dvdrental(# union all
+dvdrental(# select  '2'
+dvdrental(# union all
+dvdrental(# select '3')
+dvdrental-# select A, B
+dvdrental-# from setA
+dvdrental-# left join setB
+dvdrental-#   on  setA.A = setB.B;
+ a | b
+---+---
+ x |
+ y |
+ z |
+(3 rows)
+
+4- select A, B
+from setA 
+ cross join setB;
+ 
+For example, say you work in a retail business.
+You have one table that contains all
+of your company's retail store locations,
+like London, Madrid, and Cairo.
+Then you have another table that contains a set of tasks,
+like analyze inventory, run sales report,
+and submit annual budget.
+Now your task as a database administrator for the company
+is to write a SQL script
+that generates each of these tasks for each of your stores,
+programmatically, along with a due date for each task.
+With cross join, this is easy to do.
+Just take your two tables, cross join them,
+and you'll get a list of each task
+being assigned to each store.
+
+
+with Stores as (
+select 'london' as store
+union all
+select 'madrid'
+union all
+select 'mad'),
+
+tasks as (select 'analyse inventory' as task
+union all
+select ' run sales report'
+union all
+select 'annual budget')
+
+select store ,task,date '12/31/2021' as 'due date'
+from stores
+cross join tasks
+
+As a bonus, I'm gonna show you another way
+to use common table expressions to generate data.
+There's actually a function in Postgres
+called generate series
+that can be used to automatically generate a row of numbers.
+For example, if we now go to another blank query
+and type in select generate series, open parentheses,
+one, 10, close parentheses, and then run the query,
+we get a sequence of numbers ranging from one to 10.
+We can also use this to demonstrate the cross join.
+In this query, I still have my two CTEs,
+but inside each one I've used the generate series function.
+Based on the example I just showed you,
+you can probably tell
+that the first CTE generates the numbers one through three.
+We can confirm this by highlighting that line in our query
+and just using F5 to run it.
+And we get the results one, two, three
+in a column labeled A.
+But the second CTE looks a little different
+because the generate series function
+is wrapped inside a function named CHR.
+The CHR function takes the numbers you give it
+and interprets them by their ASCII equivalents.
+For those who aren't familiar, ASCII, or A-S-C-I-I,
+stands for the American Standard Code
+for Information Interchange.
+It's a character encoding system that is used on computers
+and other devices around the world.
+Letters, numbers, and symbols
+from dozens of different languages
+all have ASCII equivalents.
+Computer data is just numbers
+and ASCII was invented as a way
+to map certain textual characters to a numerical equivalent
+so they can be communicated and stored by computer systems.
+In the case of our example,
+the letter X is represented by the number 88
+and the number Z by the number 90.
+So in order to generate the letters X, Y, and Z, in order,
+we can tell the generate series function
+to start at number 88 and go to number 90,
+and then the CHR function interprets those ASCII codes
+into their text equivalents.
+To demonstrate, just highlight line six
+and run it with the F5 key,
+and you'll see that we get the results X, Y, Z
+in a column labeled B.
+Now we go below our two CTEs
+and we have a simple select statement
+that says select A and B
+from A cross joined to B.
+We run the query and we get the same results
+as we did earlier in this video,
+but we get it using fewer lines of code.
+This is just a more efficient way
+
+
+with A as (
+select generate_series(1,3) as A
+),
+B as(
+select CHR(generate_series(88,90)) AS B
+)
+select A,B
+from A
+cross join B;
+
+ a | b
+---+---
+ 1 | X
+ 1 | Y
+ 1 | Z
+ 2 | X
+ 2 | Y
+ 2 | Z
+ 3 | X
+ 3 | Y
+ 3 | Z
+(9 rows)
+
+--------------anti-join
+
+select customer.first_name,customer.last_name,film.title,rental.rental_date,rental.return_date, payment.amount, payment.payment_date
+from customer 
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+inner join payment 
+on payment.rental_id = rental.rental_id
+and payment.customer_id = customer.customer_id
+where customer.customer_id = 336
+order by rental_date;
+
+ first_name | last_name |         title         |     rental_date     |     return_date
+------------+-----------+-----------------------+---------------------+---------------------
+ Joshua     | Mark      | African Egg           | 2005-08-19 05:00:16 | 2005-08-26 06:12:16
+ Joshua     | Mark      | Angels Life           | 2005-07-30 03:18:24 | 2005-08-08 08:50:24
+ Joshua     | Mark      | Berets Agent          | 2005-08-17 08:49:05 | 2005-08-22 08:53:05
+ Joshua     | Mark      | Blackout Private      | 2005-06-19 04:32:52 | 2005-06-24 09:37:52
+ Joshua     | Mark      | Blues Instinct        | 2005-06-20 06:45:00 | 2005-06-23 11:43:00
+ Joshua     | Mark      | Breaking Home         | 2005-06-15 21:12:13 | 2005-06-18 21:43:13
+ Joshua     | Mark      | Christmas Moonshine   | 2005-07-10 08:11:03 | 2005-07-15 08:23:03
+ Joshua     | Mark      | Color Philadelphia    | 2005-07-08 06:40:25 | 2005-07-14 08:54:25
+ Joshua     | Mark      | Conquerer Nuts        | 2005-08-20 09:04:30 | 2005-08-22 05:38:30
+ Joshua     | Mark      | Cupboard Sinners      | 2005-06-18 20:52:46 | 2005-06-21 19:40:46
+ Joshua     | Mark      | Eagles Panky          | 2005-06-19 14:50:19 | 2005-06-20 14:33:19
+ Joshua     | Mark      | Enemy Odds            | 2005-07-07 17:55:53 | 2005-07-13 16:43:53
+ Joshua     | Mark      | Eyes Driving          | 2005-07-10 07:15:07 | 2005-07--- More  --
+
+select customer.first_name,customer.last_name,film.title,rental.rental_date,rental.return_date, payment.amount, payment.payment_date
+from customer 
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+left join payment 
+on payment.rental_id = rental.rental_id
+and payment.customer_id = customer.customer_id
+where customer.customer_id = 336
+order by rental_date;
+ first_name | last_name |         title         |     rental_date     |     return_date     | amount |        payment_date
+------------+-----------+-----------------------+---------------------+---------------------+--------+----------------------------
+ Joshua     | Mark      | Breaking Home         | 2005-06-15 21:12:13 | 2005-06-18 21:43:13 |        |
+ Joshua     | Mark      | Lovely Jingle         | 2005-06-18 02:36:10 | 2005-06-19 21:21:10 |        |
+ Joshua     | Mark      | Cupboard Sinners      | 2005-06-18 20:52:46 | 2005-06-21 19:40:46 |        |
+ Joshua     | Mark      | Blackout Private      | 2005-06-19 04:32:52 | 2005-06-24 09:37:52 |        |
+ Joshua     | Mark      | Eagles Panky          | 2005-06-19 14:50:19 | 2005-06-20 14:33:19 |        |
+ Joshua     | Mark      | Blues Instinct        | 2005-06-20 06:45:00 | 2005-06-23 11:43:00 |        |
+ Joshua     | Mark      | Nightmare Chill       | 2005-06-21 00:37:50 | 2005-06-22 23:46:50 |        |
+ Joshua     | Mark      | Storm Happiness       | 2005-06-21 11:17:35 | 2005-06-22 12:51:35 |        |
+ Joshua     | Mark      | Enemy Odds            | 2005-07-07 17:55:53 | 2005-07-13 16:43:53 |   5.99 | 2007-04-07 16:24:19.996577
+ Joshua     | Mark      | Color Philadelphia    | 2005-07-08 06:40:25 | 2005-07-14 08:54:25 |   2.99 | 2007-04-08 05:08:51.996577
+ Joshua     | Mark      | Eyes Driving          | 2005-07-10 07:15:07 | 2005-07-12 11:57:07 |   2.99 | 2007-04-10 05:43:33.996577
+ Joshua     | Mark      | Christmas Moonshine   | 2005-07-10 08:11:03 | 2005-07-15 08:23:03 |   0.99 | 2007-04-10 06:39:29.996577
+ Joshua     | Mark      | Lies Treatment        | 2005-07-11 15:33:50 | 2005-07-17 12:49:50 |   4.99 | 2007-04-11 14:02:16.996577
+ Joshua     | Mark      | Quills Bull           | 2005-07-11 21:58:53 | 2005-07-17 21:18:53 |   6.99 | 2007-04-11 20:27:19.996577
+ Joshua     | Mark      | West Lion             | 2005-07-29 01:35:47 | 2005-07-30 02:16:47 |   4.99 | 2007-04-29 00:04:13.996577
+ Joshua     | Mark      | Panky Submarine       | 2005-07-29 06:37:02 | 2005-08-04 03:13:02 |   6.99 | 2007-04-29 05:05:28.996577
+ Joshua     | Mark      | Vanilla Day           | 2005-07-29 13:18:00 | 2005-07-30 18:51:00 |   4.99 | 2007-04-29 11:46:26.996577
+ Joshua     | Mark      | Angels Life           | 2005-07-30 03:18:24 | 2005-08-08 08:50:24 |   8.99 | 2007-04-30 01:46:50.996577
+ Joshua     | Mark      | Superfly Trip         | 2005-07-30 16:47:17 | 2005-08-02 22:15:17 |   0.99 | 2007-04-30 15:15:43.996577
+ Joshua     | Mark      | Mosquito Armageddon   | 2005-07-31 19:15:58 | 2005-08-05 20:23:58 |   0.99 | 2007-04-30 17:44:24.996577
+ Joshua     | Mark      | Berets Agent          | 2005-08-17 08:49:05 | 2005-08-22 08:53:05 |   2.99 | 2007-03-17 07:17:31.996577
+ Joshua     | Mark      | Titans Jerk           | 2005-08-18 06:36:22 | 2005-08-26 11:36:22 |   8.99 | 2007-03-18 05:04:48.996577
+ Joshua     | Mark      | Gandhi Kwai           | 2005-08-19 00:20:37 | 2005-08-26 01:48:37 |   0.99 | 2007-03-18 22:49:03.996577
+ Joshua     | Mark      | African Egg           | 2005-08-19 05:00:16 | 2005-08-26 06:12:16 |   3.99 | 2007-03-19 03:28:42.996577
+ Joshua     | Mark      | Snowman Rollercoaster | 2005-08-19 09:50:39 | 2005-08-22 14:01:39 |   0.99 | 2007-03-19 08:19:05.996577
+ Joshua     | Mark      | Conquerer Nuts        | 2005-08-20 09:04:30 | 2005-08-22 05:38:30 |   4.99 | 2007-03-20 07:32:56.996577
+ Joshua     | Mark      | Jacket Frisco         | 2005-08-21 07:09:27 | 2005-08-22 01:27:27 |   2.99 | 2007-03-21 05:37:53.996577
+ Joshua     | Mark      | Sunrise League        | 2005-08-22 11:01:15 | 2005-08-31 09:23:15 |  10.99 | 2007-03-22 09:29:41.996577
+ Joshua     | Mark      | Instinct Airport      | 2005-08-23 15:41:12 | 2005-08-26 10:29:12 |   2.99 | 2007-03-23 14:09:38.996577
+ Joshua     | Mark      | Juggler Hardly        | 2006-02-14 15:16:03 |                     |   0.99 | 2007-05-14 13:44:29.996577
+(30 rows)
+
+select customer.first_name,customer.last_name,film.title,rental.rental_date,rental.return_date, payment.amount, payment.payment_date
+from customer 
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+left join payment 
+on payment.rental_id = rental.rental_id
+and payment.customer_id = customer.customer_id
+where payment.rental_id is null
+order by rental_date;
+
+SELECT
+    COUNT(DISTINCT f.film_id)
+FROM
+    rental r
+JOIN
+    inventory i ON r.inventory_id = i.inventory_id
+JOIN
+    film f ON i.film_id = f.film_id
+WHERE
+    r.return_date IS NULL;
+ count
+-------
+   169
+(1 row)
+Explanation:
+SELECT COUNT(DISTINCT f.film_id): This counts the number of unique film_id values.
+FROM rental r: Starts by selecting from the rental table, aliased as r.
+JOIN inventory i ON r.inventory_id = i.inventory_id: Joins rental with the inventory table (aliased as i) on the common inventory_id to link rentals to specific inventory items.
+JOIN film f ON i.film_id = f.film_id: Joins inventory with the film table (aliased as f) on the common film_id to get film details.
+WHERE r.return_date IS NULL: This crucial WHERE clause filters the results to include only those rentals where the return_date is NULL, indicating that the film has not yet been returned.
+
+----------------------
+sub queries
+
+select film.title, film.rental_rate 
+from film
+where film.rental_rate >(
+select avg(film.rental_rate) from film
+)
+
+--------
+select customer.first_name,customer.last_name,customer.customer_id from customer
+where customer.customer_id  in (
+SELECT 
+   rental.customer_id
+FROM
+    rental  WHERE
+    rental.rental_date between '2005-05-25' and '2005-05-26'
+);
+ first_name | last_name | customer_id
+------------+-----------+-------------
+ Jared      | Ely       |         524
+ Mary       | Smith     |           1
+ Jennifer   | Davis     |           6
+ Maria      | Miller    |           7
+ Carol      | Garcia    |          18
+ Ruth       | Martinez  |          19
+ Sarah      | Lewis     |          23
+ Deborah    | Walker    |          25
+ Virginia   | Green     |          35
+ Pamela     | Baker     |          37
+ Amanda     | Carter    |          40
+ Christine  | Roberts   |          43
+ Marie      | Turner    |          44
+ Ann        | Evans     |          48
+ Joyce      | Edwards   |          49
+ Alice      | Stewart   |          51
+ Heather    | Morris    |          53
+ Gloria     | Cook      |          56
+ Beverly    | Brooks    |          73
+ Kathryn    | Coleman   |          82
+ Jacqueline | Long      |          86
+ Bonnie     | Hughes    |          88
+This last query is actually very similar to an inner join.
+We could just inner join
+from the customer table to the rental table
+and then add a condition in our where clause
+that says where rental date is between these two dates.
+The only issue with doing it that way is that the inner join
+will cause you to return multiple rows per customer.
+To avoid returning duplicate rows per customer,
+you can use a subquery like we did in this example.
+
+
+select distinct customer.customer_id,customer.first_name,customer.last_name,film.title,max(rental.rental_date) as "latest rentaldate" from customer 
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+ group by
+customer.customer_id,customer.first_name,customer.last_name,film.title
+
+order by 4 desc;
+
+ customer_id | first_name  |  last_name   |            title            |  latest rentaldate
+-------------+-------------+--------------+-----------------------------+---------------------
+          12 | Nancy       | Thomas       | Zorro Ark                   | 2005-05-31 11:10:17
+          30 | Melissa     | King         | Zorro Ark                   | 2005-07-11 00:08:54
+          37 | Pamela      | Baker        | Zorro Ark                   | 2005-07-29 06:54:48
+          47 | Frances     | Parker       | Zorro Ark                   | 2005-06-18 08:34:59
+          84 | Sara        | Perry        | Zorro Ark                   | 2005-08-02 21:00:05
+          85 | Anne        | Powell       | Zorro Ark                   | 2005-08-18 11:21:51
+         108 | Tracy       | Cole         | Zorro Ark                   | 2005-07-09 14:34:09
+         120 | Sylvia      | Ortiz        | Zorro Ark                   | 2005-07-08 10:05:02
+         158 | Veronica    | Stone        | Zorro Ark                   | 2005-07-12 21:46:33
+         198 | Elsie       | Kelley       | Zorro Ark                   | 2005-05-28 11:33:46
+         215 | Jessie      | Banks        | Zorro Ark                   | 2005-05-29 03:49:03
+         226 | Maureen     | Little       | Zorro Ark                   | 2005-07-12 13:24:47
+         235 | Jackie      | Lynch        | Zorro Ark                   | 2005-06-15 21:50:32
+
+Now suppose we want to find the most recent film
+rented by each customer.
+I've already got a query prepared
+that gets us part of the way there.
+We start off with customer INNNER JOIN to rental
+inventory INNER JOIN to rental,
+and then film INNER JOIN to inventory.
+And you can see in our select clause,
+we have the latest rental date
+calculated within our max function.
+This query works fine,
+but it doesn't give us the result we want.
+It returns all rentals for all customers.
+So, almost 16,000 rows total,
+because there is nothing that is filtering
+the rental table that says
+give me only the most recent rental for each customer.
+I've got another query staged which allows us to get
+the count of distinct customers in our database
+who have rented from our DVD rental business.
+The distinct function within the count function
+allows us to get that distinct count of customer IDs
+INNER JOIN on the rental table.
+So we know we have 599 customers who've
+rented from our business and we need to get the results
+from our first query down to just one row per customer.
+In order to do this, we need a way to create
+a subset of the rental table that returns
+only the latest rental for each customer.
+Then we can filter on that subset.
+To demonstrate one method, let's add a
+WHERE clause to our query,
+
+
+select count(distinct customer.customer_id) from customer 
+inner join rental
+on rental.customer_id = customer.customer_id;
+
+
+select distinct customer.customer_id,customer.first_name,customer.last_name,film.title,max(rental.rental_date) as "latest rentaldate" 
+from customer
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+where 
+rental.rental_date =(
+select max(r.rental_date) from rental r
+where r.customer_id = rental.customer_id          
+)
+ group by
+customer.customer_id,customer.first_name,customer.last_name,film.title
+
+order by 4 desc;
+ customer_id | first_name  |  last_name   |            title            |  latest rentaldate
+-------------+-------------+--------------+-----------------------------+---------------------
+         250 | Jo          | Fowler       | Zoolander Fiction           | 2005-08-22 17:52:05
+         373 | Louis       | Leone        | Zhivago Core                | 2006-02-14 15:16:03
+         348 | Roger       | Quintanilla  | Yentl Idaho                 | 2005-08-23 18:50:54
+         308 | Thomas      | Grigsby      | Wrong Behavior              | 2005-08-23 15:03:13
+         532 | Neil        | Renner       | World Leathernecks          | 2006-02-14 15:16:03
+         385 | Phillip     | Holm         | Working Microcosmos         | 2005-08-23 02:06:01
+         288 | Bobbie      | Craig        | Worker Tarzan               | 2005-08-22 12:41:33
+           8 | Susan       | Wilson       | Wonderland Christmas        | 2005-08-23 14:31:19
+         395 | Johnny      | Turpin       | Wonderland Christmas        | 2005-08-23 19:54:24
+         591 | Kent        | Arsenault    | Wonderland Christmas        | 2005-08-20 15:05:42
+         539 | Mathew      | Bolin        | Wonderful Drop              | 2005-08-22 21:24:19
+          77 | Jane        | Bennett      | Won Dares                   | 2005-08-22 21:34:00
+         216 | Natalie     | Meyer        | Women Dorado                | 2006-02-14 15:16:03
+ inner to outer rental table
+If we look closely at the results
+we can see that there are some customers with duplicate rows
+like Helen Harris who rented two films
+during her most recent rental.
+So by using our sub query, we accomplished
+what we set out to do, sort of,
+if we want to get this result set down to
+one row per customer, we need to do a little more work.
+So we're going to use a SQL function
+that I really enjoy called STRING_AGG.
+STRING_AGG is similar to our CONCAT function,
+except instead of concatenating values across
+multiple columns, STRING_AGG lets us
+CONCATenate values across rows,
+collapsing them all into a single row.
+As its name implies, STRING_AGG is an aggregating function,
+so you will most often use it with group by clause.
+Let's go back to our query to demonstrate how it works.
+First. Let's remove the film title from our GROUP BY clause.
+Then let's go to the select clause
+and remove the film.title.
+We'll write STRING_AGG open parenthesis
+film.title then comma, then inside of two tick marks
+we're going to put a semi-colon followed by a space.
+Then after the second tick mark
+we will write ORDER BY film.title.
+Finally, we will alias this AS "Films Rented."
+Before we run this query, let me explain what this is doing.
+STRING_AGG has two arguments,
+and an optional order by clause.
+The first argument is the column or expression
+that you wish to concatenate together.
+In this case, for those customers who
+rented multiple films during their most recent rental,
+we want to combine the film titles.
+The second argument is the separator.
+It's the character you want to use to
+separate multiple film titles.
+In this case, I chose a semi-colon followed by a space.
+The order by clause within String_AGG
+comes after the separator argument.
+And as I mentioned a moment ago, it's optional,
+but let's suppose that we want to
+list the films alphabetically.
+We can use this part of the String_AGG
+function to specify that.
+Now let's run the query
+
+select distinct customer.customer_id,customer.first_name,customer.last_name,max(rental.rental_date) as "latest rentaldate" ,string_agg(film.title, '; ' order by film.title) as "film rented"
+from customer
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+where 
+rental.rental_date =(
+select max(r.rental_date) from rental r
+where r.customer_id = rental.customer_id          
+)
+ group by
+customer.customer_id,customer.first_name,customer.last_name
+
+order by 4 desc;
+
+ customer_id | first_name  |  last_name   |  latest rentaldate  |               film rented
+-------------+-------------+--------------+---------------------+------------------------------------------
+           5 | Elizabeth   | Brown        | 2006-02-14 15:16:03 | Gables Metropolis
+           9 | Margaret    | Moore        | 2006-02-14 15:16:03 | Deep Crusade
+          11 | Lisa        | Anderson     | 2006-02-14 15:16:03 | Bull Shawshank
+          14 | Betty       | White        | 2006-02-14 15:16:03 | Groundhog Uncut
+          15 | Helen       | Harris       | 2006-02-14 15:16:03 | Candidate Perdition; Smoking Barbarella
+          21 | Michelle    | Clark        | 2006-02-14 15:16:03 | Dwarfs Alter
+          22 | Laura       | Rodriguez    | 2006-02-14 15:16:03 | Suit Walls
+          23 | Sarah       | Lewis        | 2006-02-14 15:16:03 | Divine Resurrection
+          28 | Cynthia     | Young        | 2006-02-14 15:16:03 | Suspects Quills
+          29 | Angela      | Hernandez    | 2006-02-14 15:16:03 | Canyon Stock
+          33 | Anna        | Hill         | 2006-02-14 15:16:03 | Boulevard Mob
+          41 | Stephanie   | Mitchell     | 2006-02-14 15:16:03 | Shock Cabin
+          42 | Carolyn     | Perez        | 2006-02-14 15:16:03 | River Outlaw; Torque Bound
+          43 | Christine   | Roberts      | 2006-02-14 15:16:03 | Motions Details; Pollock Deliverance
+          44 | Marie       | Turner       | 2006-02-14 15:16:03 | American Circus
+          52 | Julie       | Sanchez      | 2006-02-14 15:16:03 | Trading Pinocchio
+          53 | Heather     | Morris       | 2006-02-14 15:16:03 | Lawless Vision; Peach Innocent
+          56 | Gloria      | Cook         | 2006-02-14 15:16:03 | Igby Maker
+          58 | Jean        | Bell         | 2006-02-14 15:16:03 | Ridgemont Submarine
+          60 | Mildred     | Bailey       | 2006-02-14 15:16:03 | Boogie Amelie; Chamber Italian
+          64 | Judith      | Cox          | 2006-02-14 15:16:03 | Doors President
+          69 | Judy        | Gray         | 2006-02-14 15:16:03 | Summer Scarface
+
+select distinct customer.customer_id,customer.first_name,customer.last_name,film.title,max(rental.rental_date) as "latest rentaldate" 
+from customer
+inner join rental
+on rental.customer_id = customer.customer_id
+inner join inventory
+on inventory.inventory_id =rental.inventory_id
+inner join film
+on film.film_id = inventory.film_id
+where 
+rental.rental_date =(
+select max(r.rental_date) from rental r
+where r.customer_id = rental.customer_id          
+)
+ group by
+customer.customer_id,customer.first_name,customer.last_name
+order by 4 desc;
+
+error film.title not in group
+
+
+select  customer.customer_id,customer.first_name,customer.last_name,
+(
+select min(rental.rental_date) from rental 
+where rental.customer_id =  customer.customer_id         
+) as "earliest rentaldate" , 
+(
+select max(rental.rental_date) from rental 
+where rental.customer_id =  customer.customer_id         
+) as "latest rentaldate"
+from customer
+order by first_name,customer.last_name;
+
+ customer_id | first_name  |  last_name   | earliest rentaldate |  latest rentaldate
+-------------+-------------+--------------+---------------------+---------------------
+         375 | Aaron       | Selby        | 2005-05-26 21:48:13 | 2005-08-23 02:46:13
+         367 | Adam        | Gooch        | 2005-05-30 14:49:34 | 2005-08-21 13:41:14
+         525 | Adrian      | Clary        | 2005-05-27 17:47:22 | 2006-02-14 15:16:03
+         217 | Agnes       | Bishop       | 2005-05-29 22:14:55 | 2005-08-22 19:02:48
+         389 | Alan        | Kahn         | 2005-05-31 00:16:57 | 2005-08-23 21:11:33
+         352 | Albert      | Crouse       | 2005-05-29 14:44:22 | 2006-02-14 15:16:03
+         568 | Alberto     | Henning      | 2005-06-16 10:07:10 | 2006-02-14 15:16:03
+         454 | Alex        | Gresham      | 2005-05-29 08:08:13 | 2005-08-23 06:55:26
+         439 | Alexander   | Fennell      | 2005-05-25 21:07:59 | 2005-08-23 21:27:35
+         423 | Alfred      | Casillas     | 2005-06-15 22:08:06 | 2005-08-23 12:46:38
+         567 | Alfredo     | Mcadams      | 2005-06-19 12:58:53 | 2005-08-23 06:18:43
+          51 | Alice       | Stewart      | 2005-05-25 19:37:02 | 2005-08-22 04:31:50
+         152 | Alicia      | Mills        | 2005-05-27 06:48:33 | 2006-02-14 15:16:03
+         548 | Allan       | Cornish      | 2005-05-26 04:14:29 | 2006-02-14 15:16:03
+
+
+The technical term for a sub query that is contained
+in the FROM clause is a derived table.
+
+First, let's write the query
+to identify the top five customers from our payment table.
+We'll just select the customer ID and sum
+of the payment amount for each customer.
+As you can see this query returns the top five customers
+
+select customer_id,sum(amount)
+from payment
+where payment_date between '2007-02-15' and '2007-02-21'
+group by  customer_id
+having sum(amount) > 30
+order by  sum(amount) desc
+limit 5;
+ customer_id |  sum
+-------------+-------
+         178 | 44.92
+         454 | 44.92
+         176 | 42.92
+          26 | 41.93
+         267 | 38.91
+(5 rows)
+
+but now we need to reach over to our customer table
+and get their contact information.
+which is by joining our derived table to the customer table.
+
+select  first_name,last_name,email,top_five.totamt
+from (
+select customer_id,sum(amount) as totamt
+from payment
+where payment_date between '2007-02-15' and '2007-02-21'
+group by  customer_id
+having sum(amount) > 30
+order by   totamt desc
+limit 5
+) as top_five
+inner join customer on customer.customer_id= top_five.customer_id
+order by 4 desc;
+
+
+
+ first_name | last_name |              email               | totamt
+------------+-----------+----------------------------------+--------
+ Marion     | Snyder    | marion.snyder@sakilacustomer.org |  44.92
+ Alex       | Gresham   | alex.gresham@sakilacustomer.org  |  44.92
+ June       | Carroll   | june.carroll@sakilacustomer.org  |  42.92
+ Jessica    | Hall      | jessica.hall@sakilacustomer.org  |  41.93
+ Margie     | Wade      | margie.wade@sakilacustomer.org   |  38.91
+
+
+The other way to approach this problem is
+with what is known as a nested sub query.
+
+
+select  first_name,last_name,email
+from  customer
+where customer_id in(
+select customer_id from(
+select customer_id,sum(amount) as totamt
+from payment
+where payment_date between '2007-02-15' and '2007-02-21'
+group by  customer_id
+having sum(amount) > 30
+order by   totamt desc
+limit 5
+) as top_five
+);
+ first_name | last_name |              email
+------------+-----------+----------------------------------
+ Jessica    | Hall      | jessica.hall@sakilacustomer.org
+ June       | Carroll   | june.carroll@sakilacustomer.org
+ Marion     | Snyder    | marion.snyder@sakilacustomer.org
+ Margie     | Wade      | margie.wade@sakilacustomer.org
+ Alex       | Gresham   | alex.gresham@sakilacustomer.org
+
+So that now we have a query within a query within a query.
+ nested sub query cannot give totamt
+
+---------------------
+
+So you can use either exists or not exists.
+Both of these functions exists and not exists
+have to be used with sub queries.
+So they are a good example to work with.
+Exists and not exists are both Boolean operators
+which means they return true
+if the sub query you specify returns at least one row.
+If the sub query you specify does not return any rows
+the exists operator will return false.
+We start off with a query
+that returns all the customers in our customer table.
+Our task is defined all the customers
+who submitted payments in the amount
+of $30 or more between the dates
+of February 15th and February 19th of the year 2007.
+So to begin, we'll go down a line
+and start our where clause and we'll say where exists
+and then open parenthesis to begin our sub query.
+Come down a couple lines, and head up, indent,
+and we'll start writing our inner query where
+we will say select customer ID
+from payment where payment date is
+between 2007,
+0-2 15,
+and 2007,
+0-2, 19.
+And this is the key part right here,
+payment dot customer ID is equal
+to customer dot customer ID.
+We need some way of connecting our inner query back
+to the outer query.
+Finally, we'll say group by customer ID, having sum amount
+greater than or equal to 30.
+Alright, let's run the query
+and see what happens to our list.
+We suddenly get reduced down to four rows,
+and if we take our inner query
+and then we paste it into a new query tool, comment out
+the and of our where clause, we can run this query
+and see that indeed we get four customers
+and we can even sum the amount to see the amounts
+are indeed above $30.
+So if we go back to our original query then
+we can verify that this is correct and this returns to us
+those four customers who apparently between the two dates
+paid more than $30 to our DVD rental business.
+Now, as I mentioned, the reverse of exists is not
+exists. So if we want to get the other 595 customers in
+our customer table, we can just say where not exists
+in that section and run the query again.
+And we will get 595 customers.
+All of the ones who didn't make payments
+above $30 in that timeframe.
+
+
+
+select  first_name,last_name,email
+from  customer
+where  exists(
+select customer_id
+from payment
+where payment_date between '2007-02-15' and '2007-02-21'
+and customer.customer_id= payment.customer_id
+group by  customer_id
+having sum(amount) > 30
+);
+
+ first_name | last_name |                email
+------------+-----------+-------------------------------------
+ Michelle   | Clark     | michelle.clark@sakilacustomer.org
+ Jessica    | Hall      | jessica.hall@sakilacustomer.org
+ Brenda     | Wright    | brenda.wright@sakilacustomer.org
+ Julia      | Flores    | julia.flores@sakilacustomer.org
+ Valerie    | Black     | valerie.black@sakilacustomer.org
+ June       | Carroll   | june.carroll@sakilacustomer.org
+ Marion     | Snyder    | marion.snyder@sakilacustomer.org
+ Jeanne     | Lawson    | jeanne.lawson@sakilacustomer.org
+ Rosemary   | Schmidt   | rosemary.schmidt@sakilacustomer.org
+ Claudia    | Fuller    | claudia.fuller@sakilacustomer.org
+ Mabel      | Holland   | mabel.holland@sakilacustomer.org
+ Christy    | Vargas    | christy.vargas@sakilacustomer.org
+ Margie     | Wade      | margie.wade@sakilacustomer.org
+ Ernest     | Stepp     | ernest.stepp@sakilacustomer.org
+ Alex       | Gresham   | alex.gresham@sakilacustomer.org
+ Bill       | Gavin     | bill.gavin@sakilacustomer.org
+ Karl       | Seal      | karl.seal@sakilacustomer.org
+ Ivan       | Cromwell  | ivan.cromwell@sakilacustomer.org
+ Johnnie    | Chisholm  | johnnie.chisholm@sakilacustomer.org
+ Tracy      | Herrmann  | tracy.herrmann@sakilacustomer.org
+ Seth       | Hannon    | seth.hannon@sakilacustomer.org
+(21 rows)
+
+=================================================
+unions
+
+
+select customer.first_name,customer.last_name from customer 
+where customer.first_name = 'Susan'
+
+union all
+
+select actor.first_name,actor.last_name from actor 
+where actor.first_name = 'Susan' ;
+
+
+ first_name | last_name
+------------+-----------
+ Susan      | Wilson
+ Susan      | Davis
+ Susan      | Davis
+(3 rows)
+
+
+dvdrental=# select customer.first_name,customer.last_name from customer
+dvdrental-# where customer.first_name = 'Susan'
+dvdrental-#
+dvdrental-# union all
+dvdrental-#
+dvdrental-# select actor.first_name,actor.last_name from actor
+dvdrental-# where actor.first_name = "Susan" ;
+ERROR:  column "Susan" does not exist
+LINE 5: where actor.first_name = "Susan" ;
+
+
+select 'customer' as type ,customer.first_name,customer.last_name from customer 
+where customer.first_name = 'Susan'
+
+union all
+
+select 'actor' as type , actor.first_name,actor.last_name from actor 
+where actor.first_name = 'Susan' ;
+
+   type   | first_name | last_name
+----------+------------+-----------
+ customer | Susan      | Wilson
+ actor    | Susan      | Davis
+ actor    | Susan      | Davis
+(3 rows)
+logical processing order
+from, where, group by,having,select,distinct,order by, limit
+
+The final rule to keep in mind with UNION and UNION ALL,
+has to do with aliasing our columns.
+If you want to alias a column
+in a combined union, all statement
+you must do it in your first select statement.
+To demonstrate I'm going to take our as type aliases
+and remove them from the first and third select statements.
+And then I'm going to run the query again.
+When I do this, our type column is suddenly, named column
+in between question marks.
+Now, if I want to fix this, I can take our as type alias
+and I can just apply it back to the first select statement.
+If I run the query again
+we see that our column is named Type
+once more.
+You only have to alias once
+in the first select statement
+you do not have to repeat the alias
+in every single subsequent select statement.
+
+select 'customer' as type ,customer.first_name,customer.last_name from customer 
+where customer.first_name = 'Susan'
+
+union all
+
+select 'actor' , actor.first_name,actor.last_name from actor 
+where actor.first_name = 'Susan' ;
+
+
+Which of the following are true?
+
+Every SELECT statement within UNION must have the same number of columns.
+
+The columns can have varying data types.
+
+If you want to specify ORDER BY, you must do it before you define every SELECT statement.
+
+If you want to alias a column, you must do it in your first SELECT statement.
+correct
+What is the basic function of UNION and UNION ALL?
+
+To combine all the contents of the tables
+
+To combine the results of two or more SELECT statements
+
+To remove duplicate values
+
+
+WITH CTE AS (
+	SELECT a.first_name
+		, a.last_name
+		, f.title
+	FROM actor a
+		INNER JOIN film_actor fa
+			ON fa.actor_id = a.actor_id
+		INNER JOIN film f
+			ON f.film_id = fa.film_id
+)
+
+SELECT title
+FROM CTE
+Where cte.LAST_NAME = ‘BALE’
+
+INTERSECT
+
+SELECT title
+FROM CTE
+WHERE CTE.last_name = ‘Monroe’
+	AND CTE.first_name = ‘Penelope’
+
+     title
+---------------
+ Wyoming Storm
+(1 row)
+
+This is the movie that Harrison Bale
+and his sister Penelope have starred in together.
+
+with cte as(
+select a.first_name,a.last_name,f.title
+from actor a
+inner join film_actor fa
+on fa.actor_id = a.actor_id
+inner join film f
+on f.film_id = fa.film_id 
+)
+select title
+from cte
+where cte.last_name = 'Bale'
+except
+select title from cte
+where cte.last_name = 'Monroe'
+and cte.first_name ='Penelope';
+
+         title
+------------------------
+ Perdition Fargo
+ Past Suicides
+ Double Wrath
+ Half Outfield
+ Sting Personal
+ Rushmore Mermaid
+ Thief Pelican
+ Doubtfire Labyrinth
+ Walls Artist
+ Muppet Mile
+ Wedding Apollo
+ Fantasia Park
+ Wonderland Christmas
+ Punk Divorce
+ Groove Fiction
+ Greedy Roots
+ Pluto Oleander
+ Ballroom Mockingbird
+ Nash Chocolat
+ Lose Inch
+ Elephant Trojan
+ Random Go
+ Wagon Jaws
+ Homicide Peach
+ Rollercoaster Bringing
+ Lady Stage
+ Badman Dawn
+
+----------------
+
+in the SQL database can be broadly categorized
+as the following Boolean,
+which is another way of saying true or false.
+Text, which can also be referred to as character or string.
+Numbers, which are often referred
+to as numeric or integer types.
+And then Temporal, which refer to dates and times.
+
+There are additional data types
+in Postgres and other SQL databases
+but we're not gonna cover those in this course.
+Some of these can be things like Arrays,
+JSON, which stands for JavaScript Object Notation,
+Key-value pairs, and UUIDs or Universally Unique Identifiers
+which are also known as G-U-I-D-s or GUIDs
+which stands for Globally Unique Identifiers.
+
+
+In Postgres, a Boolean column can store
+true, false or null values.
+Remember from our earlier videos that a null value
+in a column means that data is missing or non-existent.
+
+
+select false as  "boolean"
+union all
+select '0'
+union all
+select 'n'
+union all
+select 'no'
+union all
+select 'false'
+union all
+select 'false';
+
+ boolean
+---------
+ f
+ f
+ f
+ f
+ f
+ f
+(6 rows)
+
+
+select true as 'boolean'
+union all
+select '1'
+union all
+select 'y'
+union all
+select 'yes'
+union all
+select 'true'
+union all
+select 'true';
+
+error in ""
+
+
+select true as "boolean"
+union all
+select '1'
+union all
+select 'y'
+union all
+select 'yes'
+union all
+select 'true'
+union all
+select 'true';
+
+ boolean
+---------
+ t
+ t
+ t
+ t
+ t
+ t
+(6 rows)
+
+These examples show the different inputs that a Boolean
+in column and Postgres will accept.
+If you feed it the value of one, it will convert it to true.
+Or if you feed it the value of zero,
+it will convert it to false.
+If you give it the text value of yes or Y or true
+it will convert that to a true value as well.
+And if you give it a value of no or false or N
+it will convert that to a false value.
+
+dvdrental=# SELECT "this is some text
+dvdrental"# that I am writing," as TextColumn;
+ERROR:  column "this is some text
+that I am writing," does not exist
+LINE 1: SELECT "this is some text
+               ^
+dvdrental=# SELECT 'this is some text that I am writing' as TextColumn;
+             textcolumn
+-------------------------------------
+ this is some text that I am writing
+(1 row)
+
+SELECT 25 as NumberExample,25.25 as DecimalExample;
+ numberexample | decimalexample
+---------------+----------------
+            25 |          25.25
+
+
+A true/false value is a ________.
+boolean
+  correct 
+A word or series of letter in single quotes is a _______.
+string
+  correct 
+Numbers are of the _______ data type.
+numeric
+  correct 
+Dates and times are of the _______ data type.
+temporal
+  correct 
+
+In SQL, the primary difference between single quotes and double quotes lies in their usage and interpretation: 
+Single Quotes ('): Single quotes are used to enclose string literals (text values) and, in some SQL dialects, date literals. They signify that the enclosed content should be treated as a literal value rather than a database object or keyword.
+Code
+
+    SELECT 'Hello World' AS Message;
+    SELECT * FROM employees WHERE last_name = 'Smith';
+Double Quotes ("): Double quotes are primarily used to enclose identifiers such as table names, column names, or other database object names, especially when these identifiers contain special characters (like spaces), are reserved keywords, or need to preserve case sensitivity.
+Code
+
+    SELECT "Employee Name" FROM "Payroll Data";
+Important Considerations:
+SQL Dialect Dependence:
+The behavior of double quotes can vary between different SQL database systems (e.g., MySQL, PostgreSQL, SQL Server). Some systems might treat double quotes as string delimiters by default (like single quotes), while others strictly enforce their use for delimited identifiers.
+QUOTED_IDENTIFIER Setting:
+In SQL Server, the SET QUOTED_IDENTIFIER ON setting enables the ANSI standard behavior where double quotes are used for identifiers. When QUOTED_IDENTIFIER is OFF, double quotes are treated as string delimiters.
+Backticks (` `):
+MySQL uses backticks (`` ` ``) as an alternative to double quotes for enclosing identifiers, particularly when they are MySQL keywords or contain special characters.
+Best Practice:
+While double quotes can be used for identifiers, it is generally recommended to use identifiers that do not require quoting (e.g., no spaces, no reserved keywords) to improve readability and portability across different SQL environments.
+
+SELECT 'Hello, World!';
+INSERT INTO users (name) VALUES ('John Doe');
+SELECT * FROM products WHERE category = 'Electronics';
+
+SELECT "Order ID" FROM orders;
+dvdrental=# CREATE TABLE "MyTable" (id INT);
+
+----------date time
+
+SELECT LOCALTIMESTAMP,
+CURRENT_DATE,
+cast(LOCALTIMESTAMP as  date) as"Date",
+localtime,
+cast(LOCALTIMESTAMP as time) as "time",
+current_timestamp,
+current_time,
+current_timestamp at time zone 'Europe/Helsinki';
+
+       localtimestamp       | current_date |    Date    |    localtime    |      time       |        current_timestamp         |     current_time      |          timezone
+----------------------------+--------------+------------+-----------------+-----------------+----------------------------------+-----------------------+----------------------------
+ 2025-08-30 10:53:36.797002 | 2025-08-30   | 2025-08-30 | 10:53:36.797002 | 10:53:36.797002 | 2025-08-30 10:53:36.797002+05:30 | 10:53:36.797002+05:30 | 2025-08-30 08:23:36.797002
+(1 row)
+
+
+select * from pg_timezone_names;
+
+               name               | abbrev | utc_offset | is_dst
+----------------------------------+--------+------------+--------
+ Africa/Abidjan                   | GMT    | 00:00:00   | f
+ Africa/Accra                     | GMT    | 00:00:00   | f
+ Africa/Addis_Ababa               | EAT    | 03:00:00   | f
+ Africa/Algiers                   | CET    | 01:00:00   | f
+ Africa/Asmara                    | EAT    | 03:00:00   | f
+ Africa/Asmera                    | EAT    | 03:00:00   | f
+ Africa/Bamako                    | GMT    | 00:00:00   | f
+ Africa/Bangui                    | WAT    | 01:00:00   | f
+ Africa/Banjul                    | GMT    | 00:00:00   | f
+ Africa/Bissau                    | GMT    | 00:00:00   | f
+ Africa/Blantyre                  | CAT    | 02:00:00   | f
+ Africa/Brazzaville               | WAT    | 01:00:00   | f
+ Africa/Bujumbura                 | CAT    | 02:00:00   | f
+ Africa/Cairo                     | EEST   | 03:00:00   | t
+ Africa/Casablanca                | +01    | 01:00:00   | f
+ Africa/Ceuta                     | CEST   | 02:00:00   | t
+ Africa/Conakry                   | GMT    | 00:00:00   | f
+
+So we'll say SELECT LOCALTIMESTAMP and then run the query.
+We see years first, followed by months
+then days, then hours, minutes and seconds.
+When working with databases,
+we may have countless examples of questions
+we want to answer using date and time data.
+For example,
+"Which customers rented videos in the month of February?"
+or "How many customers rent videos late at night?"
+or "What's the average number of days
+between when a video was rented
+and when it is returned by the customer?"
+Before we try to answer these questions
+let's explore some of the different functions
+we can use in Postgres
+when working with dates and times.
+We've already selected local timestamp.
+So let's go down a row
+and let's write in another function called CURRENT_DATE
+and see what results.
+We get today's date,
+formatted as year followed by month, followed by day.
+We can then go down another line
+and we can use a cast function,
+to CAST(LOCALTIMSTAMP as date).
+We'll alias this as date and then run it
+and we get pretty much the same result.
+We can then put in the LOCAL_TIME function
+in the next line to get the local time at 11:05 AM.
+But at that same token,
+I can take that cast function again
+and say CAST(LOCATIMESTAMP as time) and alias that as "Time"
+and I'll get the exact same result,
+11:05 AM without the time zone,
+let's keep going.
+I will now use CURENT_TIMESTAMP
+to see the current time with the time zone added.
+So this is an interesting difference
+between the local timestamp and current timestamp functions.
+You'll see in the current timestamp at the very end,
+there is a _04.
+This represents the difference between my local time zone
+and the universal time zone or Greenwich time zone.
+I can also go down another line
+and say CURRENT_TIME to get my time,
+but with that same time zone included.
+Continuing on we can actually use CURRENT_TIMESTAMP again
+but we can actually specify the specific time zone
+we want to use.
+Press specify at times zone 'Europe/ Helsinki'
+and I run it again.
+I can get the current time in the city of Helsinki.
+If you're curious
+what other time zones are available out there.
+You can run a simple query
+which I will put down here in a comment block
+which says 'SELECT * FROM pg_timezone_names'.
+If I run this query, I will get a table ,
+showing all of the time zones
+that are available inside of Postgres.
+For instance, if I'd like to see the current time
+in Caracas.
+I can take this value and say current time zone
+in America's Caracas, run this query again
+and I will get the current time in Caracas, Venezuela.
+So a great example of some of the flexibility
+that you can build
+into your Postgres queries using times zones.
+We continue going,
+let's explore the ocean extract function
+which allows you to pull different parts of the date
+and time hierarchy out of a given date.
+For example, we'll come down on a new line
+we'll begin with EXTRACT(YEAR FROM CURRENT_TIMESTAMP)
+and we'll refer to this AS "Year".
+Run the query and we get the year as 2021.
+Let's go back and clean up some of our earlier work
+that we did so that we can allow more space
+inside of our query tool.
+Now let's do the same thing.
+I'm going to copy this.
+Come down at a comma and a new line.
+And this time let's say EXTRACT MONTH
+and then let's come down to alias that AS "Month".
+And we're going to add a few more lines.
+We're going to get three more lines pasted below.
+We'll say day alias as "Day",
+hour alias as "Hour"
+and then minute alias as "Minute".
+And then if we run this query,
+we get the hierarchy of our current date, the year,
+the month, the day, the hour
+and the minute all broken out into separate columns.
+Another way of doing this is
+with a function called date part which takes a given date
+and breaks it down into its different parts.
+So we'll come down a couple lines,
+start our DATE_PART function.
+And this just has a slightly different syntax
+from the extract function.
+We're going to start with a 'year',
+and will say CURRENT_DATE AS "Today''s Year".
+Let's take this and copy it, two more times.
+We'll say ('Month', CURRENT_DATE) AS "Today''s Month"
+and then we will say 'DAY' as "Today''s Day".
+Notice how I'm putting double ticks inside
+of these quotation marks.
+This is what is known as escaping.
+If I just had a single tick in here,
+SQL would try to treat this
+as me defining a new string that it wants to work with.
+And if I tried to run this, it would cause a SQL error.
+So I'm using double ticks inside of these quotation marks
+to quote escape my string and thus make sure
+that I don't receive any errors when I run this SQL.
+Now let's take this and run it
+and we should get the same results we got a moment ago.
+Date part is going to return the year, the month
+and the day of the current date.
+Which is better date part?
+DATE_PART or EXTRACT?
+Well they both do the same thing so I don't think that
+either one is really better than the other.
+Next let's learn a new function called date trunc,
+or date truncate.
+This is very similar to the truncate feature
+that we used earlier in this week
+but it's going to truncate the date instead
+and that's going to be a little bit different.
+So let's take our three lines of date part and copy them
+and then let's paste them below themselves.
+Then let's replace the DATE_PART with DATE_TRUNC
+on each of these three lines.
+And then we're going to alias these as "TRUNC_Year",
+"TRUNC_Month" and "TRUNC_Day".
+Now let's run the query and see what happens.
+Notice that we're actually getting
+a full date time column now.
+Instead of parsing out
+the individual components of each date,
+we're actually getting that full date
+but they'd been truncated in some way.
+Date trunc is first of all
+with the year value going to give us
+the first day of the year.
+So it's giving us January 1st, 2021.
+If we pass it the month argument,
+date trunc is going to return
+the first day of the current month that we are in.
+And if we use date trunc with the day argument,
+we will get the day that we are currently on
+but the first hour of the day that we're on.
+This is a little bit confusing
+but it illustrates what date part does
+as opposed to what date trunc does.
+Why would we use date trunc?
+Per se if you wanted to dynamically determine
+the first day of a year or the first day of a month
+for a given column that you pass in.
+In the example you see here,
+I've selected the rental date from our rental table
+in the second line, I've got a date trunc function,
+and then in the third line, I have a date part function.
+If I run this, I will get all of our rental dates.
+But with the date trunc function
+each date has been truncated to the first day of the month
+on which the rental occurred.
+With the date park function,
+I've actually got the integer value of that month,
+the number five brought into my third column.
+The last date time function I will demonstrate is
+the age function we can use age to determine
+how much time has passed between two dates.
+So for example, we will say SELECT AGE LOCALTIMESTAMP,
+then comma then in order to give it something to compare to
+we will give the date trunc function open parenthesis
+and we will get the start of the current year that we're in.
+So we'll type in ('Year', LOCALTIMSTAMP)
+and say AS AgeExample.
+When we run this, we get a value returned to us
+that says four months, four days, 11 hours and 16 minutes
+since the start of the year.
+
+select extract(year from current_timestamp) as "year",
+extract(month from current_timestamp) as "mon",
+extract(day from current_timestamp) as "day",
+extract(hour from current_timestamp) as "hour",
+extract(minute from current_timestamp) as "min";
+ year | mon | day | hour | min
+------+-----+-----+------+-----
+ 2025 |   8 |  30 |   11 |   3
+(1 row)
+
+select date_part ('year',current_date)  as "today''s year",
+date_part ('month',current_date)  as "today''s month",
+date_part ('day',current_date)  as "today''s day",
+date_part ('hour',current_date)  as "today''s hour",
+date_part ('minute',current_date)  as "today''s min",
+
+ date_trunc ('year',current_date)  as "trunc_year",
+ date_trunc ('month',current_date)  as "trunc_month",
+ date_trunc('day',current_date)  as "trunc_day";
+ today''s year | today''s month | today''s day | today''s hour | today''s min |        trunc_year         |        trunc_month        |         trunc_day
+---------------+----------------+--------------+---------------+--------------+---------------------------+---------------------------+---------------------------
+          2025 |              8 |           30 |             0 |            0 | 2025-01-01 00:00:00+05:30 | 2025-08-01 00:00:00+05:30 | 2025-08-30 00:00:00+05:30
+(1 row)
+
+dvdrental=# select age(LOCALTIMESTAMP), date_trunc('Year', LOCALTIMESTAMP) AS AgeExample;
+       age        |     ageexample
+------------------+---------------------
+ -11:24:48.342555 | 2025-01-01 00:00:00
+(1 row)
+
+
+dvdrental=#
+dvdrental=# select age(LOCALTIMESTAMP, date_trunc('Year', LOCALTIMESTAMP)) AS AgeExample;
+           ageexample
+--------------------------------
+ 7 mons 29 days 11:25:53.470587
+(1 row)
+/* age([startdate],[enddate])*/
+
+
+Our first task is to find out which customers rented videos
+in the month of February.
+
+select distinct customer.first_name,customer.last_name,customer.email,rental_date
+from rental 
+inner join customer
+on customer.customer_id = rental.customer_id
+where date_part('month',rental.rental_date) = 2;
+
+ first_name |  last_name  |                 email                 |     rental_date
+------------+-------------+---------------------------------------+---------------------
+ Adrian     | Clary       | adrian.clary@sakilacustomer.org       | 2006-02-14 15:16:03
+ Albert     | Crouse      | albert.crouse@sakilacustomer.org      | 2006-02-14 15:16:03
+ Alberto    | Henning     | alberto.henning@sakilacustomer.org    | 2006-02-14 15:16:03
+ Alicia     | Mills       | alicia.mills@sakilacustomer.org       | 2006-02-14 15:16:03
+ Allan      | Cornish     | allan.cornish@sakilacustomer.org      | 2006-02-14 15:16:03
+ Allen      | Butterfield | allen.butterfield@sakilacustomer.org  | 2006-02-14 15:16:03
+ Allison    | Stanley     | allison.stanley@sakilacustomer.org    | 2006-02-14 15:16:03
+ Ana        | Bradley     | ana.bradley@sakilacustomer.org        | 2006-02-14 15:16:03
+ Andy       | Vanhorn     | andy.vanhorn@sakilacustomer.org       | 2006-02-14 15:16:03
+ Angela     | Hernandez   | angela.hernandez@sakilacustomer.org   | 2006-02-14 15:16:03
+ Anna       | Hill        | anna.hill@sakilacustomer.org          | 2006-02-14 15:16:03
+ Annette    | Olson       | annette.olson@sakilacustomer.org      | 2006-02-14 15:16:03
+ April      | Burns       | april.burns@sakilacustomer.org        | 2006-02-14 15:16:03
+
+Our next task is to determine what is the most popular time
+for customers to rent movies.
+So we're going to use the rental table again
+but this time we're going to extract the hour
+from the rental date in order to try and find out what hours
+of the day have the most rentals occurring in them.
+
+select extract ('hour' from rental.rental_date) as rental_hour, count(rental.rental_id) as rental_count
+from rental
+group by  extract ('hour' from rental.rental_date)
+order by  rental_hour desc;
+
+ rental_hour | rental_count
+-------------+--------------
+          23 |          642
+          22 |          610
+          21 |          671
+          20 |          658
+          19 |          676
+          18 |          688
+          17 |          634
+          16 |          664
+          15 |          887
+select extract ('hour' from rental.rental_date) as rental_hour, count(rental.rental_id) as rental_count
+from rental
+group by  extract ('hour' from rental.rental_date)
+order by  rental_count desc;
+
+ rental_hour | rental_count
+-------------+--------------
+          15 |          887
+           8 |          696
+           0 |          694
+          18 |          688
+           3 |          684
+           4 |          681
+          19 |          676
+          10 |          673
+          21 |          671
+
+
+select rental_date,return_date,age(rental_date,return_date) as ageofrental
+from rental
+where return_date is not null
+order by  ageofrental desc;
+
+dvdrental-# order by  ageofrental desc;
+     rental_date     |     return_date     |    ageofrental
+---------------------+---------------------+-------------------
+ 2005-08-01 04:12:08 | 2005-08-01 22:12:08 | -18:00:00
+ 2005-07-28 12:46:47 | 2005-07-29 06:46:47 | -18:00:00
+ 2005-05-26 05:47:12 | 2005-05-26 23:48:12 | -18:01:00
+ 2005-06-15 18:24:55 | 2005-06-16 12:26:55 | -18:02:00
+ 2005-07-09 04:58:26 | 2005-07-09 23:00:26 | -18:02:00
+ 2005-08-02 14:18:07 | 2005-08-03 08:20:07 | -18:02:00
+ 2005-08-02 01:51:48 | 2005-08-02 19:53:48 | -18:02:00
+ 2005-07-08 21:32:30 | 2005-07-09 15:34:30 | -18:02:00
+ 2005-06-19 13:29:11 | 2005-06-20 07:31:11 | -18:02:00
+ 2005-07-29 11:18:27 | 2005-07-30 05:21:27 | -18:03:00
+
+
+select rental_date,return_date,age(return_date,rental_date) as ageofrental
+from rental
+where return_date is not null
+order by  ageofrental desc;
+
+     rental_date     |     return_date     |   ageofrental
+---------------------+---------------------+-----------------
+ 2005-06-18 16:58:58 | 2005-06-27 22:57:58 | 9 days 05:59:00
+ 2005-08-21 20:12:43 | 2005-08-31 02:11:43 | 9 days 05:59:00
+ 2005-07-28 10:21:52 | 2005-08-06 16:19:52 | 9 days 05:58:00
+ 2005-08-20 17:46:06 | 2005-08-29 23:44:06 | 9 days 05:58:00
+ 2005-08-21 13:07:10 | 2005-08-30 19:05:10 | 9 days 05:58:00
+ 2005-08-17 04:27:24 | 2005-08-26 10:25:24 | 9 days 05:58:00
+ 2005-07-31 15:28:47 | 2005-08-09 21:24:47 | 9 days 05:56:00
+ 2005-07-10 11:50:51 | 2005-07-19 17:46:51 | 9 days 05:56:00
+ 2005-07-06 18:03:16 | 2005-07-15 23:58:16 | 9 days 05:55:00
+ 2005-08-18 00:36:09 | 2005-08-27 06:31:09 | 9 days 05:55:00
+ 2005-07-30 18:03:13 | 2005-08-08 23:57:13 | 9 days 05:54:00
+
+
+
+select avg(age(return_date,rental_date)) as ageavg
+from rental
+where return_date is not null;
+
+         ageavg
+------------------------
+ 4 days 24:36:28.541706
+(1 row)
+
+--------------------------------------------------
+
+string manipulation functions
+
+substring, position, length and replace.
+
+Substring returns characters within another set
+of characters or returns a string within another string
+which is why it's called substring.
+Position will find the position of a particular character
+or set of characters that you give it.
+Length, returns the number of characters in a string,
+and then replace will find a particular character
+or set of characters you give it,
+and we'll replace it with whatever characters you choose.
+
+select customer_id,first_name,last_name,email,substring(email,5,5) as subexp
+from customer;
+
+dvdrental=# select customer_id,first_name,last_name,email,substring(email,5,5) as subexp
+dvdrental-# from customer;
+ customer_id | first_name  |  last_name   |                  email                   | subexp
+-------------+-------------+--------------+------------------------------------------+--------
+         524 | Jared       | Ely          | jared.ely@sakilacustomer.org             | d.ely
+           1 | Mary        | Smith        | mary.smith@sakilacustomer.org            | .smit
+           2 | Patricia    | Johnson      | patricia.johnson@sakilacustomer.org      | icia.
+           3 | Linda       | Williams     | linda.williams@sakilacustomer.org        | a.wil
+           4 | Barbara     | Jones        | barbara.jones@sakilacustomer.org         | ara.j
+           5 | Elizabeth   | Brown        | elizabeth.brown@sakilacustomer.org       | abeth
+           6 | Jennifer    | Davis        | jennifer.davis@sakilacustomer.org        | ifer.
+           7 | Maria       | Miller       | maria.miller@sakilacustomer.org          | a.mil
+           8 | Susan       | Wilson       | susan.wilson@sakilacustomer.org          | n.wil
+
+
+
+select customer_id,first_name,last_name,email,substring(email,5,5) as subexp,position('@' in email) as posnexp
+from customer;
+
+ customer_id | first_name  |  last_name   |                  email                   | subexp | posnexp
+-------------+-------------+--------------+------------------------------------------+--------+---------
+         524 | Jared       | Ely          | jared.ely@sakilacustomer.org             | d.ely  |      10
+           1 | Mary        | Smith        | mary.smith@sakilacustomer.org            | .smit  |      11
+           2 | Patricia    | Johnson      | patricia.johnson@sakilacustomer.org      | icia.  |      17
+           3 | Linda       | Williams     | linda.williams@sakilacustomer.org        | a.wil  |      15
+           4 | Barbara     | Jones        | barbara.jones@sakilacustomer.org         | ara.j  |      14
+           5 | Elizabeth   | Brown        | elizabeth.brown@sakilacustomer.org       | abeth  |      16
+           6 | Jennifer    | Davis        | jennifer.davis@sakilacustomer.org        | ifer.  |      15
+
+
+select customer_id,first_name,last_name,email,substring(email,5,5) as subexp,position('@' in email) as posnexp,position('.' in email) as osnexp,substring(email, 1, position('@' in email)-1) as username
+from customer;
+
+ customer_id | first_name  |  last_name   |                  email                   | subexp | posnexp | osnexp |       username
+-------------+-------------+--------------+------------------------------------------+--------+---------+--------+-----------------------
+         524 | Jared       | Ely          | jared.ely@sakilacustomer.org             | d.ely  |      10 |      6 | jared.ely
+           1 | Mary        | Smith        | mary.smith@sakilacustomer.org            | .smit  |      11 |      5 | mary.smith
+           2 | Patricia    | Johnson      | patricia.johnson@sakilacustomer.org      | icia.  |      17 |      9 | patricia.johnson
+           3 | Linda       | Williams     | linda.williams@sakilacustomer.org        | a.wil  |      15 |      6 | linda.williams
+           4 | Barbara     | Jones        | barbara.jones@sakilacustomer.org         | ara.j  |      14 |      8 | barbara.jones
+           5 | Elizabeth   | Brown        | elizabeth.brown@sakilacustomer.org       | abeth  |      16 |     10 | elizabeth.brown
+           6 | Jennifer    | Davis        | jennifer.davis@sakilacustomer.org        | ifer.  |      15 |      9 | jennifer.davis
+           7 | Maria       | Miller       | maria.miller@sakilacustomer.org          | a.mil  |      13 |      6 | maria.miller
+           8 | Susan       | Wilson       | susan.wilson@sakilacustomer.org          | n.wil  |      13 |      6 | susan.wilson
+
+
+select customer_id,first_name,last_name,email,
+substring(email,5,5) as subexp,
+position('@' in email) as posnexp,
+position('.' in email) as osnexp,
+substring(email, 1, position('@' in email)-1) as username,
+substring(email, position('@' in email)+1,length(email)) as domname
+from customer;
+
+ customer_id | first_name  |  last_name   |                  email                   | subexp | posnexp | osnexp |       username        |      domname
+-------------+-------------+--------------+------------------------------------------+--------+---------+--------+-----------------------+--------------------
+         524 | Jared       | Ely          | jared.ely@sakilacustomer.org             | d.ely  |      10 |      6 | jared.ely             | sakilacustomer.org
+           1 | Mary        | Smith        | mary.smith@sakilacustomer.org            | .smit  |      11 |      5 | mary.smith            | sakilacustomer.org
+           2 | Patricia    | Johnson      | patricia.johnson@sakilacustomer.org      | icia.  |      17 |      9 | patricia.johnson      | sakilacustomer.org
+           3 | Linda       | Williams     | linda.williams@sakilacustomer.org        | a.wil  |      15 |      6 | linda.williams        | sakilacustomer.org
+           4 | Barbara     | Jones        | barbara.jones@sakilacustomer.org         | ara.j  |      14 |      8 | barbara.jones         | sakilacustomer.org
+           5 | Elizabeth   | Brown        | elizabeth.brown@sakilacustomer.org       | abeth  |      16 |     10 | elizabeth.brown       | sakilacustomer.org
+           6 | Jennifer    | Davis        | jennifer.davis@sakilacustomer.org        | ifer.  |      15 |      9 | jennifer.davis        | sakilacustomer.org
+           7 | Maria       | Miller       | maria.miller@sakilacustomer.org          | a.mil  |      13 |      6 | maria.miller          | sakilacustomer.org
+           8 | Susan       | Wilson       | susan.wilson@sakilacustomer.org          | n.wil  |      13 |      6 | susan.wilson          | sakilacustomer.org
+
+
+select customer_id,first_name,last_name,email,
+substring(email,5,5) as subexp,
+position('@' in email) as posnexp,
+position('.' in email) as osnexp,
+substring(email, 1, position('@' in email)-1) as username,
+substring(email, position('@' in email)+1,length(email)) as domainame,
+replace(email,'sakilacustomer.org','adventureworks.com') newemail
+from customer;
+
+in newemail col changed email appears
+
+ customer_id | first_name  |  last_name   |                  email                   | subexp | posnexp | osnexp |       username        |     domainame      |                 newemail
+-------------+-------------+--------------+------------------------------------------+--------+---------+--------+-----------------------+--------------------+------------------------------------------
+         524 | Jared       | Ely          | jared.ely@sakilacustomer.org             | d.ely  |      10 |      6 | jared.ely             | sakilacustomer.org | jared.ely@adventureworks.com
+           1 | Mary        | Smith        | mary.smith@sakilacustomer.org            | .smit  |      11 |      5 | mary.smith            | sakilacustomer.org | mary.smith@adventureworks.com
+           2 | Patricia    | Johnson      | patricia.johnson@sakilacustomer.org      | icia.  |      17 |      9 | patricia.johnson      | sakilacustomer.org | patricia.johnson@adventureworks.com
+           3 | Linda       | Williams     | linda.williams@sakilacustomer.org        | a.wil  |      15 |      6 | linda.williams        | sakilacustomer.org | linda.williams@adventureworks.com
+           4 | Barbara     | Jones        | barbara.jones@sakilacustomer.org         | ara.j  |      14 |      8 | barbara.jones         | sakilacustomer.org | barbara.jones@adventureworks.com
+           5 | Elizabeth   | Brown        | elizabeth.brown@sakilacustomer.org       | abeth  |      16 |     10 | elizabeth.brown       | sakilacustomer.org | elizabeth.brown@adventureworks.com
+
+
+String manipulation, part 2
+
+Our task in this video is to actually split the username up into first and last_names.  take the email and then break it
+down into its username, and then break the username
+down into first_name and last_name. manipulate data dynamically and take a long string of text
+and break it down into its individual components. Our goal is to start at wherever the last_name starts.
+In order to extract the last_name, we need to start
+at whatever position the period starts at.
+
+
+
+select email,
+position('@' in email) as posnexp,
+position('.' in email) as osnexp,
+substring(email, 1, position('@' in email)-1) as username,
+substring(email, position('.' in email)+1,length(last_name)) as last_name,
+replace(substring(email, position('.' in email)+1, length(email)),'@sakilacustomer.org', '')  as last_name2,
+substring(email, position('.' in email)+1, position('@' in email)-position('.' in email)-1)  as last_name3
+from customer;
+
+                  email                   | posnexp | osnexp |       username        |  last_name   |  last_name2
+------------------------------------------+---------+--------+-----------------------+--------------+--------------
+ jared.ely@sakilacustomer.org             |      10 |      6 | jared.ely             | ely          | ely
+ mary.smith@sakilacustomer.org            |      11 |      5 | mary.smith            | smith        | smith
+ patricia.johnson@sakilacustomer.org      |      17 |      9 | patricia.johnson      | johnson      | johnson
+ linda.williams@sakilacustomer.org        |      15 |      6 | linda.williams        | williams     | williams
+ barbara.jones@sakilacustomer.org         |      14 |      8 | barbara.jones         | jones        | jones
+
+                  email                   | posnexp | osnexp |       username        |  last_name   |  last_name2  |  last_name3
+------------------------------------------+---------+--------+-----------------------+--------------+--------------+--------------
+ jared.ely@sakilacustomer.org             |      10 |      6 | jared.ely             | ely          | ely          | ely mary.smith@sakilacustomer.org            |      11 |      5 | mary.smith            | smith        | smith        | smith
+ patricia.johnson@sakilacustomer.org      |      17 |      9 | patricia.johnson      | johnson      | johnson      | johnson
+ linda.williams@sakilacustomer.org        |      15 |      6 | linda.williams        | williams     | williams     | williams
+ barbara.jones@sakilacustomer.org         |      14 |      8 | barbara.jones         | jones        | jones        | jones
+ elizabeth.brown@sakilacustomer.org       |      16 |     10 | elizabeth.brown       | brown        | brown        | brown
+ jennifer.davis@sakilacustomer.org        |      15 |      9 | jennifer.davis        | davis        | davis        | davis
+
+
+select email,
+position('@' in email) as posnexp,
+position('.' in email) as osnexp,
+substring(email, 1, position('@' in email)-1) as username,
+substring(email, 1,position('.' in email)-1)  as first_name,
+substring(email, position('.' in email)+1, position('@' in email)-position('.' in email)-1)  as last_name
+from customer;
+
+                  email                   | posnexp | osnexp |       username        | first_name  |  last_name
+------------------------------------------+---------+--------+-----------------------+-------------+--------------
+ jared.ely@sakilacustomer.org             |      10 |      6 | jared.ely             | jared       | ely
+ mary.smith@sakilacustomer.org            |      11 |      5 | mary.smith            | mary        | smith
+ patricia.johnson@sakilacustomer.org      |      17 |      9 | patricia.johnson      | patricia    | johnson
+ linda.williams@sakilacustomer.org        |      15 |      6 | linda.williams        | linda       | williams
+ barbara.jones@sakilacustomer.org         |      14 |      8 | barbara.jones         | barbara     | jones
+ elizabeth.brown@sakilacustomer.org       |      16 |     10 | elizabeth.brown       | elizabeth   | brown
+ jennifer.davis@sakilacustomer.org        |      15 |      9 | jennifer.davis        | jennifer    | davis
+ maria.miller@sakilacustomer.org          |      13 |      6 | maria.miller          | maria       | miller
+
+
+
+REPLACE(SUBSTRING(email, POSITION('.' in email) + 1, LENGTH(email)), 'davidson.edu', '') as answer
+What will the above code return from 'john.doe@davidson.edu'?
+doe@
+  correct 
+Which line of code will give us the substring between the '.' and the '@' in john.doe@davidson.edu?
+
+SUBSTRING(email, Position(‘@’ in email) + 1, POSITION(‘.’ in email) - POSITION(‘@’ in email) - 1) as last_name
+
+REPLACE(SUBSTRING(email, POSITION('.' in email) + 1, LENGTH(email)), 'davidson.edu', ''
+
+SUBSTRING(email, Position(‘.’ in email), POSITION(‘@’ in email) - POSITION(‘.’ in email)) as last_name
+
+SUBSTRING(email, Position(‘.’ in email) + 1, POSITION(‘@’ in email) - POSITION(‘.’ in email) - 1) as last_name
+correct
+
+--------
+
+case1
+
+
+case
+   when [cond] then
+    case
+      	when [cond] then [output]
+	else [other output]
+	end
+  else [other output]
+  end
+	
+select film_id,
+title,
+length,
+rating,
+case
+   when length between 0 and 59 then 'less than 1 hr'
+   when length between 60 and 119 then 'less than 2 hr'
+  when length between 120 and 179 then 'less than 3 hr'
+  else 'over 3'
+  end as categories
+from film
+order by length;
+
+
+ film_id |            title            | length | rating |   categories
+---------+-----------------------------+--------+--------+----------------
+     730 | Ridgemont Submarine         |     46 | PG-13  | less than 1 hr
+     469 | Iron Moon                   |     46 | PG     | less than 1 hr
+      15 | Alien Center                |     46 | NC-17  | less than 1 hr
+     504 | Kwai Homeward               |     46 | PG-13  | less than 1 hr
+     505 | Labyrinth League            |     46 | PG-13  | less than 1 hr
+     237 | Divorce Shining             |     47 | G      | less than 1 hr
+     398 | Hanover Galaxy              |     47 | NC-17  | less than 1 hr
+     869 | Suspects Quills             |     47 | PG     | less than 1 hr
+     393 | Halloween Nuts              |     47 | PG-13  | less than 1 hr
+     407 | Hawk Chill                  |     47 | PG-13  | less than 1 hr
+     247 | Downhill Enough             |     47 | G      | less than 1 hr
+     784 | Shanghai Tycoon             |     47 | PG     | less than 1 hr
+
+
+
+select 
+case
+   when length between 0 and 59 then 'less than 1 hr'
+   when length between 60 and 119 then 'less than 2 hr'
+  when length between 120 and 179 then 'less than 3 hr'
+  else 'over 3'
+  end as categories,
+  count(film_id) as countoffilms
+from film
+group by case
+  when length between 0 and 59 then 'less than 1 hr'
+   when length between 60 and 119 then 'less than 2 hr'
+  when length between 120 and 179 then 'less than 3 hr'
+  else 'over 3'
+  end
+order by countoffilms desc;
+
+   categories   | countoffilms
+----------------+--------------
+ less than 2 hr |          438
+ less than 3 hr |          420
+ less than 1 hr |           96
+ over 3         |           46
+(4 rows)
+
+
+select film_id,
+title,
+length,
+rating,
+case rating
+   when 'G' then 'GEN AUDIENCE'
+   when 'PG' then 'PAR GUIDE'
+  when 'R' then 'RESTRICT'
+  else 'UNKNOWN'
+  end as RATINGDESCRIPTION
+from film
+order by rating;
+
+ film_id |            title            | length | rating | ratingdescription
+---------+-----------------------------+--------+--------+-------------------
+     357 | Gilbert Pelican             |    114 | G      | GEN AUDIENCE
+     964 | Waterfront Deliverance      |     61 | G      | GEN AUDIENCE
+     957 | War Notting                 |     80 | G      | GEN AUDIENCE
+     178 | Connection Microcosmos      |    115 | G      | GEN AUDIENCE
+     179 | Conquerer Nuts              |    173 | G      | GEN AUDIENCE
+     354 | Ghost Groundhog             |     85 | G      | GEN AUDIENCE
+     350 | Garden Island               |     80 | G      | GEN AUDIENCE
+
+
+select 
+case rating
+   when 'G' then 'GEN AUDIENCE'
+   when 'PG' then 'PAR GUIDE'
+  when 'R' then 'RESTRICT'
+  else 'UNKNOWN'
+  end as RATINGDESCRIPTION,
+  count(film_id) as filmcount
+from film
+group by case rating
+   when 'G' then 'GEN AUDIENCE'
+   when 'PG' then 'PAR GUIDE'
+  when 'R' then 'RESTRICT'
+  else 'UNKNOWN'
+end
+
+order by RATINGDESCRIPTION;
+
+ ratingdescription | filmcount
+-------------------+-----------
+ GEN AUDIENCE      |       178
+ PAR GUIDE         |       194
+ RESTRICT          |       195
+ UNKNOWN           |       433
+(4 rows)
+
+
+select rating,
+case rating
+   when 'G' then 'GEN AUDIENCE'
+   when 'PG' then 'PAR GUIDE'
+  when 'R' then 'RESTRICT'
+  else 'UNKNOWN'
+  end as RATINGDESCRIPTION,
+  count(film_id) as filmcount
+from film
+group by rating,
+case rating
+   when 'G' then 'GEN AUDIENCE'
+   when 'PG' then 'PAR GUIDE'
+  when 'R' then 'RESTRICT'
+  else 'UNKNOWN'
+end
+
+order by RATINGDESCRIPTION;
+
+ rating | ratingdescription | filmcount
+--------+-------------------+-----------
+ G      | GEN AUDIENCE      |       178
+ PG     | PAR GUIDE         |       194
+ R      | RESTRICT          |       195
+ NC-17  | UNKNOWN           |       210
+ PG-13  | UNKNOWN           |       223
+(5 rows)
+
+
+CASE statements are structured as which of the following?
+
+
+
+IF [condition A] THEN [output B] ELSE [output C]
+
+WHEN [condition A] {output B} ELSE {output C}
+
+IF [condition A] {output B} ELSE {output C}
+
+WHEN [condition A] THEN [output B] ELSE [output C]
+correct
+CASE statements cannot be nested.
+
+
+
+True
+
+False
+correct
+Putting a CASE statement inside GROUP BY will group the results by the specified conditions.
+
+
+
+True
+
+False
+
+------------
+COALESCE - takes arg search the col  and returns the first value that is not null
+
+
+select rental_id,
+rental_date,
+return_date,
+coalesce(return_date,current_timestamp)
+
+from rental
+order by return_date desc;
+
+    15655 | 2006-02-14 15:16:03 |                     | 2025-09-05 16:17:37.71893+05:30
+     14018 | 2006-02-14 15:16:03 |                     | 2025-09-05 16:17:37.71893+05:30
+     11909 | 2006-02-14 15:16:03 |                     | 2025-09-05 16:17:37.71893+05:30
+     15644 | 2006-02-14 15:16:03 |                     | 2025-09-05 16:17:37.71893+05:30
+     16005 | 2005-08-23 21:00:22 | 2005-09-02 02:35:22 | 2005-09-02 02:35:22+05:30
+     16040 | 2005-08-23 22:19:33 | 2005-09-02 02:19:33 | 2005-09-02 02:19:33+05:30
+     15971 | 2005-08-23 19:59:33 | 2005-09-02 01:28:33 | 2005-09-02 01:28:33+05:30
+     15928 | 2005-08-23 18:23:24 | 2005-09-01 23:43:24 | 2005-09-01 23:43:24+05:30
+     15922 | 2005-08-23 18:07:31 | 2005-09-01 22:27:31 | 2005-09-01 22:27:31+05:30
+     15977 | 2005-08-23 20:07:10 | 2005-09-01 22:12:10 | 2005-09-01 22:12:10+05:30
+     15982 | 2005-08-23 20:13:31 | 2005-09-01 21:51:31 | 2005-09-01 21:51:31+05:30
+
+select rental_id,
+rental_date,
+return_date,
+coalesce(cast(return_date as varchar),'not ret') as return_date2
+
+from rental
+order by return_date desc;
+
+
+    11942 | 2006-02-14 15:16:03 |                     | not ret
+     13428 | 2006-02-14 15:16:03 |                     | not ret
+     15655 | 2006-02-14 15:16:03 |                     | not ret
+     14018 | 2006-02-14 15:16:03 |                     | not ret
+     11909 | 2006-02-14 15:16:03 |                     | not ret
+     15644 | 2006-02-14 15:16:03 |                     | not ret
+     16005 | 2005-08-23 21:00:22 | 2005-09-02 02:35:22 | 2005-09-02 02:35:22
+     16040 | 2005-08-23 22:19:33 | 2005-09-02 02:19:33 | 2005-09-02 02:19:33
+     15971 | 2005-08-23 19:59:33 | 2005-09-02 01:28:33 | 2005-09-02 01:28:33
+     15928 | 2005-08-23 18:23:24 | 2005-09-01 23:43:24 | 2005-09-01 23:43:24
+
+
+What does the COALESCE function do?
+
+Search all the selected columns for the first non-null value
+
+What function, when combined with COALESCE, will transform null values into a text value?
+
+CAST
+
+
+Which of the following is NOT a valid usage of the CAST expression?
+
+SELECT CAST ('Text' AS INTEGER);
+
+------------------------------------
+
+CREATE TABLE - INSERT - UPDATE - DELETE
+
+
+create table if not exists crew(
+id smallserial primary key not null,
+name text  not null,
+mod  text  null,
+time timestamp  null);
+insert into crew (name,mod,time) values ('d','f',current_timestamp),('r','v',current_timestamp),('g','',current_timestamp);
+
+update crew 
+set name = 'gh'
+where id = 2;
+
+delete from crew 
+where crew.name = 'd';
+
+
+create table sci_fi_films as
+select category.name as Category,
+film.title as film_title,
+film.length as film_length
+from film
+inner join film_category fc on fc.film_id =film.film_id
+ inner join category  on category.category_id = fc.category_id
+where category.name = 'Sci-Fi';
+
+
+if table droped
+
+
+select category.name as Category,
+film.title as film_title,
+film.length as film_length
+
+into sci_fi_films
+
+from film
+inner join film_category fc on fc.film_id =film.film_id
+ inner join category  on category.category_id = fc.category_id
+where category.name = 'Sci-Fi';
+
+---------------
+
+Which of the following items does the “Create Script” table definition include?
+
+Column titles
+Column data types
+Any constraints on the table
+
+---
+
+
+The function that takes numbers (specifically, integer ASCII values) and interprets them as their corresponding ASCII characters is often referred to as a "character from ASCII code" function or similar, depending on the programming language.
+Here are examples in various programming languages:
+Python: The chr() function.
+Python
+
+    print(chr(65))  # Output: A
+    print(chr(97))  # Output: a
+    print(chr(48))  # Output: 0
+
+
+What is the purpose of an anti-join?
+
+To find items that are not in the second table
+
+
+What is the precision of 66.3265?
+6
+  correct
+-------------------------
+WITH CTE AS (
+	SELECT a.first_name
+		, a.last_name
+		, f.title
+	FROM actor a
+		INNER JOIN film_actor fa
+			ON fa.actor_id = a.actor_id
+		INNER JOIN film f
+			ON f.film_id = fa.film_id
+)
+
+SELECT title
+FROM CTE
+Where cte.LAST_NAME = ‘BALE’
+
+INTERSECT
+
+SELECT title
+FROM CTE
+WHERE CTE.last_name = ‘Monroe’
+	AND CTE.first_name = ‘Penelope’
+    
+
+
+All the movies that both Harrison Bale and Penelope Monroe starred in
+
+-----------
+SELECT EXTRACT('hour' FROM rental.rental_date) as Rental_hour
+    , COUNT(rental.rental_id) as Rental_Count
+FROM rental
+GROUP BY EXTRACT('hour' FROM rental.rental_date)
+ORDER BY Rental_hour DESC
+    
+
+The most popular time for customers to return movies
+
+
+
+
+
+
+
+
+
